@@ -4,7 +4,7 @@ const asesoriaSchema = require("../models/asesoria")
 
 router.post("/asesorias", (req, res) => {
     const asesoria = asesoriaSchema(req.body);
-    animal
+    asesoria
         .save()
         .then((data) => res.json(data))
         .catch((error) => res.json({message: error}));
@@ -24,10 +24,10 @@ router.get("/asesorias/:id", (req, res) => {
 });
 
 router.put("/asesorias/:id", (req, res) => {
-    const {idAsesoria} = req.params;
-    const {nombreCliente, fecha, tema, descripcion, duracion, precio} = req.body;
-    asesoriaSchema.updateOne({id: idAsesoria}, {
-        $set: {nombreCliente, fecha, tema, descripcion, duracion, precio}
+    const {id} = req.params;
+    const {estado, nombreCliente, fecha, tema, descripcion, duracion, precio} = req.body;
+    asesoriaSchema.updateOne({_id: id}, {
+        $set: {estado, nombreCliente, fecha, tema, descripcion, duracion, precio}
     })
         .then((data) => res.json(data))
         .catch((error) => res.json({message: error}));
