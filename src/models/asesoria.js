@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const asesoriaSchema = mongoose.Schema({
-    id: {
+    estado: {
         type: String,
         required: true,
     },
